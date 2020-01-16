@@ -132,38 +132,3 @@ class Agent(object):
         loss.backward()
         self.Q_eval.optimizer.step()
         self.learn_step_counter += 1
-
-#    def learn(self, batch_size):
-#        self.Q_eval.optimizer.zero_grad()
-#        if self.replace_target_cnt is not None and \
-#           self.learn_step_counter % self.replace_target_cnt == 0:
-#            self.Q_next.load_state_dict(self.Q_eval.state_dict())
-
-#        if self.memCntr+batch_size < self.memSize:
-#            memStart = int(np.random.choice(range(self.memCntr)))
-#        else:
-#            memStart = int(np.random.choice(range(self.memSize-batch_size-1)))
-#        miniBatch=self.memory[memStart:memStart+batch_size]
-#        memory = np.array(miniBatch)
-
-#        # convert to list because memory is an array of numpy objects
-#        Qpred = self.Q_eval.forward(list(memory[:,0][:])).to(self.Q_eval.device)
-#        Qnext = self.Q_next.forward(list(memory[:,3][:])).to(self.Q_eval.device)
-
-#        maxA = T.argmax(Qnext, dim=1).to(self.Q_eval.device)
-#        rewards = T.Tensor(list(memory[:,2])).to(self.Q_eval.device)
-#        Qtarget = Qpred
-#        indices = np.arange(batch_size)
-#        Qtarget[indices,maxA] = rewards + self.GAMMA*T.max(Qnext[1])
-
-#        if self.steps > 500:
-#            if self.EPSILON - 1e-4 > self.EPS_END:
-#                self.EPSILON -= 1e-4
-#            else:
-#                self.EPSILON = self.EPS_END
-
-#        #Qpred.requires_grad_()
-#        loss = self.Q_eval.loss(Qtarget, Qpred).to(self.Q_eval.device)
-#        loss.backward()
-#        self.Q_eval.optimizer.step()
-#        self.learn_step_counter += 1
