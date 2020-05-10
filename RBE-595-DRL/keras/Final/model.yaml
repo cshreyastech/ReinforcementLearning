@@ -1,0 +1,113 @@
+backend: tensorflow
+class_name: Sequential
+config:
+- class_name: Conv2D
+  config:
+    activation: relu
+    activity_regularizer: null
+    batch_input_shape: !!python/tuple [null, 2, 84, 84]
+    bias_constraint: null
+    bias_initializer:
+      class_name: Zeros
+      config: {}
+    bias_regularizer: null
+    data_format: channels_first
+    dilation_rate: &id001 !!python/tuple [1, 1]
+    dtype: float32
+    filters: 32
+    kernel_constraint: null
+    kernel_initializer:
+      class_name: VarianceScaling
+      config: {distribution: uniform, mode: fan_avg, scale: 1.0, seed: null}
+    kernel_regularizer: null
+    kernel_size: !!python/tuple [8, 8]
+    name: conv2d_19
+    padding: valid
+    strides: !!python/tuple [4, 4]
+    trainable: true
+    use_bias: true
+- class_name: Conv2D
+  config:
+    activation: relu
+    activity_regularizer: null
+    bias_constraint: null
+    bias_initializer:
+      class_name: Zeros
+      config: {}
+    bias_regularizer: null
+    data_format: channels_last
+    dilation_rate: *id001
+    filters: 64
+    kernel_constraint: null
+    kernel_initializer:
+      class_name: VarianceScaling
+      config: {distribution: uniform, mode: fan_avg, scale: 1.0, seed: null}
+    kernel_regularizer: null
+    kernel_size: !!python/tuple [4, 4]
+    name: conv2d_20
+    padding: valid
+    strides: !!python/tuple [2, 2]
+    trainable: true
+    use_bias: true
+- class_name: Conv2D
+  config:
+    activation: relu
+    activity_regularizer: null
+    bias_constraint: null
+    bias_initializer:
+      class_name: Zeros
+      config: {}
+    bias_regularizer: null
+    data_format: channels_last
+    dilation_rate: *id001
+    filters: 64
+    kernel_constraint: null
+    kernel_initializer:
+      class_name: VarianceScaling
+      config: {distribution: uniform, mode: fan_avg, scale: 1.0, seed: null}
+    kernel_regularizer: null
+    kernel_size: !!python/tuple [3, 3]
+    name: conv2d_21
+    padding: valid
+    strides: !!python/tuple [1, 1]
+    trainable: true
+    use_bias: true
+- class_name: Flatten
+  config: {name: flatten_7, trainable: true}
+- class_name: Dense
+  config:
+    activation: relu
+    activity_regularizer: null
+    bias_constraint: null
+    bias_initializer:
+      class_name: Zeros
+      config: {}
+    bias_regularizer: null
+    kernel_constraint: null
+    kernel_initializer:
+      class_name: VarianceScaling
+      config: {distribution: uniform, mode: fan_avg, scale: 1.0, seed: null}
+    kernel_regularizer: null
+    name: dense_13
+    trainable: true
+    units: 512
+    use_bias: true
+- class_name: Dense
+  config:
+    activation: linear
+    activity_regularizer: null
+    bias_constraint: null
+    bias_initializer:
+      class_name: Zeros
+      config: {}
+    bias_regularizer: null
+    kernel_constraint: null
+    kernel_initializer:
+      class_name: VarianceScaling
+      config: {distribution: uniform, mode: fan_avg, scale: 1.0, seed: null}
+    kernel_regularizer: null
+    name: dense_14
+    trainable: true
+    units: 18
+    use_bias: true
+keras_version: 2.0.6
